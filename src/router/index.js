@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import extractParamsFromHash from "@/functions/extractParamsFromHash";
+import Home from "@/views/Home.vue";
+import Loged from "@/views/Loged.vue";
 
 Vue.use(VueRouter);
 
@@ -18,6 +20,22 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
+  },
+  {
+    path: "/loged",
+    name: "Loged",
+    component: Loged,
+    props: route => {
+      const props = extractParamsFromHash(route.hash);
+      localStorage.setItem("at", props.access_token);
+      localStorage.setItem("tt", props.token_type);
+      localStorage.setItem("ei", props.expires_in);
+      return {
+        access_token: props.access_token,
+        token_type: props.token_type,
+        expires_in: props.expires_in
+      };
+    }
   }
 ];
 
