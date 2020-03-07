@@ -1,10 +1,12 @@
+import { mergeRight, objOf } from "ramda";
+
 const createObject = (acc, param) => {
   const valueData = param.split("=");
-  return Object.defineProperty(acc, valueData[0], { value: valueData[1] });
+  return mergeRight(acc, objOf(valueData[0])(valueData[1]));
 };
 
 const extractParamsFromHash = hash =>
-  hash
+  String(hash)
     .substring(1)
     .split("&")
     .reduce(createObject, {});
