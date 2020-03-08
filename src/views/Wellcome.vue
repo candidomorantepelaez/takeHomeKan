@@ -1,21 +1,27 @@
 <template>
   <section class="wellcome__box-component">
     <div class="wellcome__box-title">
-      <h1 class="wellcome__title">TakeHomeKan</h1>
-      <p class="wellcome__subtitle">buscador de musica</p>
+      <h1 class="wellcome__title">{{ $t("app.title") }}</h1>
+      <p class="wellcome__subtitle">{{ $t("app.subtitle") }}</p>
       <div class="wellcome__box-control">
-        <a
-          href="https://accounts.spotify.com/authorize?client_id=511bba20b6f34234bffa81820246a2bb&response_type=token&redirect_uri=http:%2F%2Flocalhost:8080%2Fhome"
-          class="wellcome__enlace-control"
-        >enter</a>
+        <a v-bind:href="url" class="wellcome__enlace-control">{{
+          $t("app.action.enter")
+        }}</a>
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { generateUrlAuthenticate } from "@/sideEffects/envData";
+
 export default {
-  name: "Wellcome"
+  name: "Wellcome",
+  data: function() {
+    return {
+      url: generateUrlAuthenticate()
+    };
+  }
 };
 </script>
 
