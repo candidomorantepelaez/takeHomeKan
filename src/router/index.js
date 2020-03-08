@@ -2,29 +2,20 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import extractParamsFromHash from "@/functions/extractParamsFromHash";
 import Home from "@/views/Home.vue";
-import Loged from "@/views/Loged.vue";
+import Wellcome from "@/views/Wellcome.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "wellcome",
+    component: Wellcome
+  },
+  {
+    path: "/home",
     name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  },
-  {
-    path: "/loged",
-    name: "Loged",
-    component: Loged,
+    component: Home,
     props: route => {
       const props = extractParamsFromHash(route.hash);
       localStorage.setItem("at", props.access_token);
