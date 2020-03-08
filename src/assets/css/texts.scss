@@ -1,0 +1,61 @@
+@mixin text($size, $spacing, $weight) {
+  font-size: $size;
+  letter-spacing: $spacing;
+  font-weight: $weight;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@mixin title-1 {
+  @include text(96px, -1.5px, 200);
+}
+
+@mixin title-2 {
+  @include text(60px, -0.5px, 200);
+}
+
+@mixin title-3 {
+  @include text(48px, 0px, 400);
+}
+
+@mixin title-4 {
+  @include text(34px, 0.25px, 400);
+}
+
+@mixin title-5 {
+  @include text(24px, 0px, 400);
+}
+
+@mixin title-6 {
+  @include text(20px, 0.15px, 600);
+}
+
+@mixin subtitle-1 {
+  @include text(16px, 0.15px, 400);
+}
+
+@mixin subtitle-2 {
+  @include text(14px, 0.1px, 600);
+}
+
+@mixin body-1 {
+  @include text(16px, 0.5px, 400);
+}
+
+@mixin body-2 {
+  @include text(14px, 0.25px, 400);
+}
+
+@mixin text-button {
+  @include text(14px, 1.25px, 600);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+@mixin caption {
+  @include text(12px, 0.4px, 400);
+}
+
+@mixin overline {
+  @include text(10px, 1.5px, 400);
+  text-transform: uppercase;
+}
