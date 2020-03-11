@@ -29,7 +29,7 @@ export default {
       return this.track.artists[0];
     },
     getArtistName: function() {
-      const artist = this.getArtist();
+      const artist = this.getArtist;
       return String(artist.name);
     },
     getReleaseDate: function() {

@@ -5,7 +5,9 @@
         <p class="the-section__title">{{ title }}</p>
       </div>
       <div class="the-section__box-count">
-        <p class="the-section__count">{{ count }} {{$t("app.section.number.result")}}</p>
+        <p class="the-section__count">
+          {{ count }} {{ $t("app.section.text.result") }}
+        </p>
       </div>
     </div>
     <div class="the-section__box-data" v-show="showData">

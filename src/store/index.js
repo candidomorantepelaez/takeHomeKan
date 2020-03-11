@@ -37,7 +37,7 @@ export default new Vuex.Store({
   actions: {
     search({ commit }, { textSearch }) {
       commit("requestSearch");
-      getSearch(textSearch)
+      getSearch({ textSearch, limit: 3 })
         .then(result => commit("successSearch", { result }))
         .catch(() => commit("failureSearch"));
     }

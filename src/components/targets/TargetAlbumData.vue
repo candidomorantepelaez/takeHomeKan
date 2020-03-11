@@ -31,7 +31,7 @@ export default {
       return this.album.artists[0];
     },
     getNameArtist: function() {
-      const artist = this.getArtist();
+      const artist = this.getArtist;
       return String(artist.name);
     }
   }
