@@ -4,8 +4,8 @@
 }
 
 @mixin background-image($img) {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
   background-image: url($img);
   background-repeat: no-repeat;
   background-size: cover;

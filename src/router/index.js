@@ -30,12 +30,12 @@ const routes = [
     component: Home,
     beforeEnter: (to, from, next) => {
       const params = extractParamsFromHash(to.hash);
-      const haveSessionDataParams = checkSessionDataParams(to.hash);
+      const haveSessionDataParams = checkSessionDataParams(params);
       const haveSessionDataStored = checkSessionData();
       if (haveSessionDataParams === false && haveSessionDataStored === false) {
         next("/");
       } else {
-        if (haveSessionDataParams) {
+        if (haveSessionDataParams === true) {
           saveSessionData(params);
         }
         return next();

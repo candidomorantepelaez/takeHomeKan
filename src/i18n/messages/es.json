@@ -2,5 +2,17 @@
   "app.title": "TakeHomeKan",
   "app.subtitle": "buscador de musica",
 
-  "app.action.enter": "entrar"
+  "app.action.enter": "entrar",
+
+  "app.searchbar.search.placeholder": "buscar...",
+
+  "app.section.artist.title": "artistas",
+  "app.section.tracks.title": "canciones",
+  "app.section.albums.title": "albumes",
+  "app.section.playlists": "playlists",
+
+  "app.section.text.artist": "artista",
+  "app.section.text.result": "resultados",
+  "app.section.text.followers": "seguidores",
+  "app.section.text.popularity": "popularidad"
 }

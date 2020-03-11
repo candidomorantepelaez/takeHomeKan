@@ -5,10 +5,7 @@ export const saveSessionData = params => {
   sessionStorage.setItem("at", params.access_token);
   sessionStorage.setItem("tt", params.token_type);
   sessionStorage.setItem("ei", params.expires_in);
-  sessionStorage.setItem(
-    "ea",
-    moment().add(Number(params.expires_in), "seconds")
-  );
+  sessionStorage.setItem("ea", moment().add(Number(params.expires_in), "s"));
 };
 
 export const checkSessionData = () => {
@@ -35,8 +32,11 @@ export const checkSessionDataParams = params => {
   return (
     !isNil(params) &&
     !isEmpty(params) &&
-    has("acces_token", params) &&
+    has("access_token", params) &&
     has("token_type", params) &&
     has("expires_in", params)
   );
 };
+
+export const getAuthorization = () =>
+  `${sessionStorage.getItem("tt")} ${sessionStorage.getItem("at")}`;
