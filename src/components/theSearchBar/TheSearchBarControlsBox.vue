@@ -39,7 +39,10 @@ export default {
       const self = this;
       clearTimeout(this.delayTimer);
       this.delayTimer = setTimeout(function() {
-        self.$store.dispatch("search", { textSearch: self.textSearch });
+        self.$store.dispatch("search", {
+          textSearch: self.textSearch,
+          limit: 3
+        });
       }, 500);
     }
   }

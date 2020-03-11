@@ -5,6 +5,7 @@
   "app.action.enter": "entrar",
 
   "app.searchbar.search.placeholder": "buscar...",
+  "app.searchbar.search.lastsearch": "ultima busqueda:",
 
   "app.section.artist.title": "artistas",
   "app.section.tracks.title": "canciones",
