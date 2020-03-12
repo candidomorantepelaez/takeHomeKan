@@ -12,7 +12,10 @@
         />
       </div>
     </div>
-    <div class="the-search-bar-controls-box__icon-filter-box">
+    <div
+      class="the-search-bar-controls-box__icon-filter-box"
+      v-on:click="openSidebar"
+    >
       <p class="the-search-bar-controls-box__icon-filter">
         <font-awesome-icon :icon="['fas', 'filter']" />
       </p>
@@ -41,9 +44,13 @@ export default {
       this.delayTimer = setTimeout(function() {
         self.$store.dispatch("search", {
           textSearch: self.textSearch,
-          limit: 3
+          limit: 3,
+          type: "album,artist,playlist,track"
         });
       }, 500);
+    },
+    openSidebar: function() {
+      this.$store.dispatch("openSidebar");
     }
   }
 };

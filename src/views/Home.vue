@@ -1,13 +1,28 @@
 <template>
-  <section class="home__box-component">
+  <section
+    v-bind:class="{
+      'home__box-component': true,
+      'home__box-component--open-sidebar': showSidebar === true
+    }"
+    class="home__box-component"
+  >
+    <TheLayer v-if="showSidebar" />
     <TheSearchBar></TheSearchBar>
     <TheSection title="Albums" v-bind:count="getAlbums.length">
-      <TheTarget v-for="album in getAlbums" :key="album.id" v-bind:image="getImage(album)">
+      <TheTarget
+        v-for="album in getAlbums"
+        :key="album.id"
+        v-bind:image="getImage(album)"
+      >
         <TargetAlbumData v-bind:album="album" />
       </TheTarget>
     </TheSection>
     <TheSection title="Artists" v-bind:count="getArtists.length">
-      <TheTarget v-for="artist in getArtists" :key="artist.id" v-bind:image="getImage(artist)">
+      <TheTarget
+        v-for="artist in getArtists"
+        :key="artist.id"
+        v-bind:image="getImage(artist)"
+      >
         <TargetArtistData v-bind:artist="artist" />
       </TheTarget>
     </TheSection>
@@ -21,7 +36,11 @@
       </TheTarget>
     </TheSection>
     <TheSection title="Tracks" v-bind:count="getTracks.length">
-      <TheTarget v-for="track in getTracks" :key="track.id" v-bind:image="getImage(track.album)">
+      <TheTarget
+        v-for="track in getTracks"
+        :key="track.id"
+        v-bind:image="getImage(track.album)"
+      >
         <TargetTrackData v-bind:track="track" />
       </TheTarget>
     </TheSection>
@@ -36,6 +55,7 @@ import TargetAlbumData from "@/components/targets/TargetAlbumData";
 import TargetTrackData from "@/components/targets/TargetTrackData";
 import TargetPlaylistData from "@/components/targets/TargetPlaylistData";
 import TargetArtistData from "@/components/targets/TargetArtistData";
+import TheLayer from "@/components/theLayer/TheLayer";
 
 export default {
   name: "Home",
@@ -46,7 +66,8 @@ export default {
     TargetAlbumData,
     TargetTrackData,
     TargetPlaylistData,
-    TargetArtistData
+    TargetArtistData,
+    TheLayer
   },
   data: function() {
     return {};
@@ -63,6 +84,9 @@ export default {
     },
     getTracks() {
       return this.$store.getters.getTracks;
+    },
+    showSidebar() {
+      return this.$store.state.showSidebar;
     }
   },
   methods: {
@@ -82,6 +106,10 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
+    &--open-sidebar {
+      overflow: hidden;
+      height: 100vh;
+    }
   }
   &__box-results {
     width: 100%;

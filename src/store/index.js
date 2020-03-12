@@ -10,7 +10,8 @@ export default new Vuex.Store({
   state: {
     result: {},
     lastSearch: null,
-    lastFilter: {}
+    lastFilter: {},
+    showSidebar: false
   },
   getters: {
     getAlbums: state => {
@@ -37,6 +38,12 @@ export default new Vuex.Store({
     },
     failureSearch(state) {
       state.result = [];
+    },
+    closeSidebar(state) {
+      state.showSidebar = false;
+    },
+    openSidebar(state) {
+      state.showSidebar = true;
     }
   },
   actions: {
@@ -48,6 +55,12 @@ export default new Vuex.Store({
     },
     research({ dispatch, state }) {
       dispatch("search", state.lastFilter);
+    },
+    closeSidebar({ commit }) {
+      commit("closeSidebar");
+    },
+    openSidebar({ commit }) {
+      commit("openSidebar");
     }
   },
   modules: {}
