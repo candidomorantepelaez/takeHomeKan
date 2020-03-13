@@ -2,7 +2,7 @@ import axios from "axios";
 import { getAuthorization } from "@/sideEffects/sessionData";
 
 export const getSearch = ({
-  textSearch = "all",
+  q = "all",
   limit = "3",
   type = "album,artist,playlist,track"
 }) =>
@@ -11,7 +11,7 @@ export const getSearch = ({
       Authorization: getAuthorization()
     },
     params: {
-      q: textSearch,
+      q: q,
       type: type,
       limit: limit
     }

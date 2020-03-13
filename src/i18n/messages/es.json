@@ -6,11 +6,12 @@
 
   "app.searchbar.search.placeholder": "buscar...",
   "app.searchbar.search.lastsearch": "ultima busqueda:",
+  "app.search.filter.title": "filtros",
 
   "app.section.artist.title": "artistas",
   "app.section.tracks.title": "canciones",
   "app.section.albums.title": "albumes",
-  "app.section.playlists": "playlists",
+  "app.section.playlists.title": "playlists",
 
   "app.section.text.artist": "artista",
   "app.section.text.result": "resultados",

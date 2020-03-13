@@ -7,15 +7,12 @@
           :placeholder="$t('app.searchbar.search.placeholder')"
           type="search"
           name="search"
-          v-model="textSearch"
+          v-model="q"
           v-on:input="sendSearch"
         />
       </div>
     </div>
-    <div
-      class="the-search-bar-controls-box__icon-filter-box"
-      v-on:click="openSidebar"
-    >
+    <div class="the-search-bar-controls-box__icon-filter-box" v-on:click="openSidebar">
       <p class="the-search-bar-controls-box__icon-filter">
         <font-awesome-icon :icon="['fas', 'filter']" />
       </p>
@@ -33,7 +30,7 @@ export default {
   name: "TheSearchBarControlsBox",
   data: function() {
     return {
-      textSearch: "",
+      q: "",
       delayTimer: 0
     };
   },
@@ -43,7 +40,7 @@ export default {
       clearTimeout(this.delayTimer);
       this.delayTimer = setTimeout(function() {
         self.$store.dispatch("search", {
-          textSearch: self.textSearch,
+          q: self.q,
           limit: 3,
           type: "album,artist,playlist,track"
         });
