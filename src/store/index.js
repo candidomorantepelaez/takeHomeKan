@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import moment from "moment";
 import { pathOr } from "ramda";
 import { getSearch } from "@/api/spotifyApi";
 
@@ -7,7 +8,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    result: {}
+    result: {},
+    lastSearch: null,
+    lastFilter: {},
+    showSidebar: false
   },
   getters: {
     getAlbums: state => {
@@ -24,22 +28,39 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    requestSearch(state) {
+    requestSearch(state, filter) {
       state.result = [];
+      state.lastSearch = moment();
+      state.lastFilter = filter;
     },
     successSearch(state, payload) {
       state.result = payload.result;
     },
     failureSearch(state) {
       state.result = [];
+    },
+    closeSidebar(state) {
+      state.showSidebar = false;
+    },
+    openSidebar(state) {
+      state.showSidebar = true;
     }
   },
   actions: {
-    search({ commit }, { textSearch }) {
-      commit("requestSearch");
-      getSearch(textSearch)
+    search({ commit }, filter) {
+      commit("requestSearch", filter);
+      getSearch(filter)
         .then(result => commit("successSearch", { result }))
         .catch(() => commit("failureSearch"));
+    },
+    research({ dispatch, state }) {
+      dispatch("search", state.lastFilter);
+    },
+    closeSidebar({ commit }) {
+      commit("closeSidebar");
+    },
+    openSidebar({ commit }) {
+      commit("openSidebar");
     }
   },
   modules: {}

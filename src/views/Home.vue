@@ -1,6 +1,7 @@
 <template>
   <section class="home__box-component">
-    <TheSearchBar></TheSearchBar>
+    <TheSidebar />
+    <TheSearchBar />
     <TheSection title="Albums" v-bind:count="getAlbums.length">
       <TheTarget v-for="album in getAlbums" :key="album.id" v-bind:image="getImage(album)">
         <TargetAlbumData v-bind:album="album" />
@@ -36,6 +37,7 @@ import TargetAlbumData from "@/components/targets/TargetAlbumData";
 import TargetTrackData from "@/components/targets/TargetTrackData";
 import TargetPlaylistData from "@/components/targets/TargetPlaylistData";
 import TargetArtistData from "@/components/targets/TargetArtistData";
+import TheSidebar from "@/components/sidebars/TheSidebar";
 
 export default {
   name: "Home",
@@ -46,7 +48,8 @@ export default {
     TargetAlbumData,
     TargetTrackData,
     TargetPlaylistData,
-    TargetArtistData
+    TargetArtistData,
+    TheSidebar
   },
   data: function() {
     return {};
@@ -80,7 +83,7 @@ export default {
 .home {
   &__box-component {
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
     background-color: rgba(0, 0, 0, 0.9);
   }
   &__box-results {

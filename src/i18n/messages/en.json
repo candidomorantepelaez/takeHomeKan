@@ -5,11 +5,13 @@
   "app.action.enter": "enter",
 
   "app.searchbar.search.placeholder": "search...",
+  "app.searchbar.search.lastsearch": "last search:",
+  "app.search.filter.title": "filters",
 
   "app.section.artist.title": "artists",
   "app.section.tracks.title": "tracks",
   "app.section.albums.title": "albums",
-  "app.section.playlists": "playlists",
+  "app.section.playlists.title": "playlists",
 
   "app.section.text.artist": "artist",
   "app.section.text.result": "results",
