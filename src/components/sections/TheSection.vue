@@ -1,6 +1,6 @@
 <template>
   <section class="the-section__box-component">
-    <div class="the-section__box-info" v-on:click="toggle">
+    <div class="the-section__box-info">
       <div class="the-section__box-title">
         <p class="the-section__title">{{ $t(title) }}</p>
       </div>
@@ -8,7 +8,7 @@
         <p class="the-section__count">{{ count }} {{ $t("app.section.text.result") }}</p>
       </div>
     </div>
-    <div class="the-section__box-data" v-show="showData">
+    <div class="the-section__box-data">
       <slot></slot>
     </div>
   </section>
@@ -21,16 +21,6 @@ export default {
     title: String,
     count: Number,
     children: Array
-  },
-  data: function() {
-    return {
-      showData: true
-    };
-  },
-  methods: {
-    toggle: function() {
-      this.showData = !this.showData;
-    }
   }
 };
 </script>
@@ -43,6 +33,8 @@ export default {
     width: 100%;
     display: inline-block;
     box-sizing: border-box;
+    padding: 0 2rem;
+    width: 50%;
   }
   &__box-info {
     width: 100%;

@@ -10,7 +10,15 @@
     </header>
     <section class="the-sidebar__box-content">
       <TheSearchInput v-model="q" label="app.search.filter.search" name="q" />
+      <p
+        v-if="qError"
+        class="the-sidebar__validation"
+      >{{ $t("app.forms.validations.required", { field: $t("app.search.filter.search") }) }}</p>
       <TheTypeFilter v-model="type" label="app.search.filter.type" />
+      <p
+        v-if="typeError"
+        class="the-sidebar__validation"
+      >{{ $t("app.forms.validations.required", { field: $t("app.search.filter.type") }) }}</p>
     </section>
     <footer class="the-sidebar__box-controls">
       <ThePrimaryButton label="app.action.search" @onClick="sendSearch" />
@@ -34,7 +42,9 @@ export default {
   data: function() {
     return {
       type: "album,artist,playlist,track",
-      q: ""
+      q: "",
+      qError: false,
+      typeError: false
     };
   },
   computed: {
@@ -45,7 +55,9 @@ export default {
   methods: {
     sendSearch: function() {
       const self = this;
-      if (isEmpty(self.q) || isNil(self.type) || isEmpty(self.type)) {
+      this.qError = isNil(self.q) || isEmpty(self.q);
+      this.typeError = isNil(self.type) || isEmpty(self.type);
+      if (this.qError === true || this.typeError === true) {
         return;
       }
       self.$store.dispatch("search", {
@@ -74,11 +86,11 @@ export default {
     transition-property: width;
     transition-duration: 100ms;
     transition-delay: 50ms;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: space-between;
     &--open-sidebar {
       display: inline-flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-content: space-between;
       width: 40%;
       transition-property: display;
       transition-duration: 100ms;
@@ -97,6 +109,7 @@ export default {
   }
   &__box-content {
     width: 100%;
+    height: 100%;
     box-sizing: border-box;
     padding: 2rem;
     color: $on-surface-color;
@@ -105,6 +118,10 @@ export default {
     width: 100%;
     box-sizing: border-box;
     padding: 2rem;
+  }
+  &__validation {
+    @include overline;
+    color: $error-color;
   }
 }
 </style>

@@ -5,6 +5,8 @@
   "app.action.enter": "entrar",
   "app.action.search": "buscar",
 
+  "app.forms.validations.required": "El campo {field} es requerido",
+
   "app.searchbar.search.placeholder": "buscar...",
   "app.searchbar.search.lastsearch": "ultima busqueda:",
   "app.search.filter.title": "filtros",

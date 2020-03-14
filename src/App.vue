@@ -13,7 +13,7 @@
 
 <script>
 import TheLayer from "@/components/theLayer/TheLayer";
-import SelectLocale from "@/i18n/components/SelectLocale";
+import SelectLocale from "@/components/i18n/SelectLocale";
 
 export default {
   components: {

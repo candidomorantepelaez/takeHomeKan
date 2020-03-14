@@ -43,7 +43,7 @@ export default {
       this.delayTimer = setTimeout(function() {
         self.$store.dispatch("search", {
           q: self.q,
-          limit: 3,
+          limit: 4,
           type: "album,artist,playlist,track"
         });
       }, 500);
