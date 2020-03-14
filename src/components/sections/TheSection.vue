@@ -2,12 +2,10 @@
   <section class="the-section__box-component">
     <div class="the-section__box-info" v-on:click="toggle">
       <div class="the-section__box-title">
-        <p class="the-section__title">{{ title }}</p>
+        <p class="the-section__title">{{ $t(title) }}</p>
       </div>
       <div class="the-section__box-count">
-        <p class="the-section__count">
-          {{ count }} {{ $t("app.section.text.result") }}
-        </p>
+        <p class="the-section__count">{{ count }} {{ $t("app.section.text.result") }}</p>
       </div>
     </div>
     <div class="the-section__box-data" v-show="showData">

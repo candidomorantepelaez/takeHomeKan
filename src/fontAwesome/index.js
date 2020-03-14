@@ -4,10 +4,11 @@ import {
   faRedo,
   faFilter,
   faSearch,
-  faEllipsisH
+  faEllipsisH,
+  faCheck
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add([faRedo, faFilter, faSearch, faEllipsisH]);
+library.add([faRedo, faFilter, faSearch, faEllipsisH, faCheck]);
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

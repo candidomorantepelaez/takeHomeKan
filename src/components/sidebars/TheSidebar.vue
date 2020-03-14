@@ -9,33 +9,31 @@
       <h2 class="the-sidebar__title">{{ $t("app.search.filter.title") }}</h2>
     </header>
     <section class="the-sidebar__box-content">
-      <label for="q">Que buscar:</label>
-      <input type="search" id="q" name="q" v-model="q" />
-      <fieldset>
-        <legend>Donde buscar:</legend>
-        <label for="artists">{{ $t("app.section.artist.title") }}</label>
-        <input type="checkbox" id="artists" name="artists" v-model="artists" />
-        <label for="tracks">{{ $t("app.section.tracks.title") }}</label>
-        <input type="checkbox" id="tracks" name="tracks" v-model="tracks" />
-        <label for="albums">{{ $t("app.section.albums.title") }}</label>
-        <input type="checkbox" id="albums" name="albums" v-model="albums" />
-        <label for="playlists">{{ $t("app.section.playlists.title") }}</label>
-        <input type="checkbox" id="playlists" name="playlists" v-model="playlists" />
-      </fieldset>
+      <TheSearchInput v-model="q" label="app.search.filter.search" name="q" />
+      <TheTypeFilter v-model="type" label="app.search.filter.type" />
     </section>
-    <footer class="the-sidebar__box-controls"></footer>
+    <footer class="the-sidebar__box-controls">
+      <ThePrimaryButton label="app.action.search" @onClick="sendSearch" />
+    </footer>
   </section>
 </template>
 
 <script>
+import TheTypeFilter from "@/components/forms/sets/TheTypeFilter";
+import TheSearchInput from "@/components/forms/basic/TheSearchInput";
+import ThePrimaryButton from "@/components/forms/basic/ThePrimaryButton";
+import { isNil, isEmpty } from "ramda";
+
 export default {
   name: "TheSidebar",
+  components: {
+    TheTypeFilter,
+    TheSearchInput,
+    ThePrimaryButton
+  },
   data: function() {
     return {
-      artists: true,
-      tracks: true,
-      albums: true,
-      playlists: true,
+      type: "album,artist,playlist,track",
       q: ""
     };
   },
@@ -47,14 +45,15 @@ export default {
   methods: {
     sendSearch: function() {
       const self = this;
-      clearTimeout(this.delayTimer);
-      this.delayTimer = setTimeout(function() {
-        self.$store.dispatch("search", {
-          q: self.q,
-          limit: 3,
-          type: "album,artist,playlist,track"
-        });
-      }, 500);
+      if (isEmpty(self.q) || isNil(self.type) || isEmpty(self.type)) {
+        return;
+      }
+      self.$store.dispatch("search", {
+        q: self.q,
+        limit: 3,
+        type: self.type
+      });
+      self.$store.dispatch("closeSidebar");
     }
   }
 };
@@ -65,7 +64,7 @@ export default {
 
 .the-sidebar {
   &__box-component {
-    display: inline-flex;
+    display: none;
     width: 0%;
     position: absolute;
     background: rgba(0, 0, 0, 0.5);
@@ -79,8 +78,9 @@ export default {
     flex-wrap: nowrap;
     align-content: space-between;
     &--open-sidebar {
+      display: inline-flex;
       width: 40%;
-      transition-property: width;
+      transition-property: display;
       transition-duration: 100ms;
       transition-delay: 50ms;
     }

@@ -37,6 +37,7 @@ const routes = [
       } else {
         if (haveSessionDataParams === true) {
           saveSessionData(params);
+          return next("/home");
         }
         return next();
       }

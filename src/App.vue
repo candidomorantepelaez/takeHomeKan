@@ -6,16 +6,19 @@
     }"
   >
     <TheLayer v-if="showSidebar" />
+    <SelectLocale />
     <router-view />
   </section>
 </template>
 
 <script>
 import TheLayer from "@/components/theLayer/TheLayer";
+import SelectLocale from "@/i18n/components/SelectLocale";
 
 export default {
   components: {
-    TheLayer
+    TheLayer,
+    SelectLocale
   },
   computed: {
     showSidebar() {

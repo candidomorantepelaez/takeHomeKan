@@ -4,11 +4,13 @@
       <div class="the-search-bar-controls-box__icon-search">
         <font-awesome-icon :icon="['fas', 'search']" />
         <input
+          class="the-search-bar-controls-box__input-search"
           :placeholder="$t('app.searchbar.search.placeholder')"
           type="search"
           name="search"
           v-model="q"
           v-on:input="sendSearch"
+          autofocus
         />
       </div>
     </div>
@@ -65,6 +67,19 @@ export default {
   &__icon-search-box {
     margin-right: 1rem;
     cursor: pointer;
+  }
+  &__icon-search {
+    background: white;
+    color: black;
+    padding: 2px;
+  }
+  &__input-search {
+    border: none;
+    padding-left: 0.5rem;
+  }
+  &__input-search:focus {
+    border: none;
+    outline: none;
   }
   &__icon-filter-box {
     margin-right: 1rem;

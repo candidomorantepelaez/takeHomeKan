@@ -3,10 +3,13 @@
   "app.subtitle": "music search",
 
   "app.action.enter": "enter",
+  "app.action.search": "search",
 
   "app.searchbar.search.placeholder": "search...",
   "app.searchbar.search.lastsearch": "last search:",
   "app.search.filter.title": "filters",
+  "app.search.filter.search": "What are we looking for",
+  "app.search.filter.type": "where we look",
 
   "app.section.artist.title": "artists",
   "app.section.tracks.title": "tracks",

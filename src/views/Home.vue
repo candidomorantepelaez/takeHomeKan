@@ -2,17 +2,17 @@
   <section class="home__box-component">
     <TheSidebar />
     <TheSearchBar />
-    <TheSection title="Albums" v-bind:count="getAlbums.length">
+    <TheSection title="app.section.albums.title" v-bind:count="getAlbums.length">
       <TheTarget v-for="album in getAlbums" :key="album.id" v-bind:image="getImage(album)">
         <TargetAlbumData v-bind:album="album" />
       </TheTarget>
     </TheSection>
-    <TheSection title="Artists" v-bind:count="getArtists.length">
+    <TheSection title="app.section.artist.title" v-bind:count="getArtists.length">
       <TheTarget v-for="artist in getArtists" :key="artist.id" v-bind:image="getImage(artist)">
         <TargetArtistData v-bind:artist="artist" />
       </TheTarget>
     </TheSection>
-    <TheSection title="Playlists" v-bind:count="getPlaylists.length">
+    <TheSection title="app.section.playlists.title" v-bind:count="getPlaylists.length">
       <TheTarget
         v-for="playlist in getPlaylists"
         :key="playlist.id"
@@ -21,7 +21,7 @@
         <TargetPlaylistData v-bind:playlist="playlist" />
       </TheTarget>
     </TheSection>
-    <TheSection title="Tracks" v-bind:count="getTracks.length">
+    <TheSection title="app.section.tracks.title" v-bind:count="getTracks.length">
       <TheTarget v-for="track in getTracks" :key="track.id" v-bind:image="getImage(track.album)">
         <TargetTrackData v-bind:track="track" />
       </TheTarget>
